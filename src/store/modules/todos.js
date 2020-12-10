@@ -10,7 +10,7 @@ const getters = {
 const actions = {
   async fetchTodos({ commit }) {
     const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/todos"
+      "http://127.0.0.1:8000/api/todos"
     );
     //console.log(response.data);
     commit('setTodos', response.data);
@@ -18,13 +18,13 @@ const actions = {
 
   async addTodo({ commit }, title){
     const response = await axios.post(
-      "https://jsonplaceholder.typicode.com/todos", { title, completed: false}
+      "http://127.0.0.1:8000/api/todos", { title, completed: false}
       );
     commit('newTodo', response.data);
   },
 
   async deleteTodo({ commit }, id){
-    await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
+    await axios.delete(`http://127.0.0.1:8000/api/todos/${id}`);
     commit('removeTodo', id);
   },
 
@@ -40,7 +40,7 @@ const actions = {
 
   async updateTodo({ commit }, updTodo){
     const response = await axios.put(
-      `https://jsonplaceholder.typicode.com/todos/${updTodo.id}`, updTodo
+      `http://127.0.0.1:8000/api/todos/${updTodo.id}`, updTodo
     );
     console.log(response.data);
     commit('updateTodo', response.data);

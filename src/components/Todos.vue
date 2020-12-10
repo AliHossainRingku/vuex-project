@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Todos List</h1>
+    <add-todo></add-todo>
     <div class="todos">
       <div 
       @dblclick="onDblClick(todo)" 
@@ -9,8 +10,10 @@
       v-for="todo in allTodos" 
       :key="todo.id"
       >
+        <base-container>
         {{ todo.title }}
         <i @click="deleteTodo(todo.id)">X</i>
+        </base-container>
       </div>
     </div>
   </div>
@@ -18,8 +21,14 @@
 
 <script>
  import { mapGetters, mapActions } from "vuex";
+import BaseContainer from './BaseContainer.vue';
+import AddTodo from './AddTodo';
  export default {
     name: "Todos",
+    components:{
+        BaseContainer,
+        AddTodo
+    },
     methods: {
       ...mapActions(["fetchTodos", "deleteTodo", "updateTodo"]),
       onDblClick(todo){
@@ -43,15 +52,10 @@
   margin: 100px auto;
 }
 .todo{
-  height: 60px;
-  width: 300px;
-  background: #483b48;
-  font-size: 18px;
-  color: black;
-  margin: 10px;
-  padding: 10px;
-  float: left;
-  position: relative;
+  max-width: 30rem;
+  margin: 2rem auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  padding: 1rem;
 }
 i{
   position: relative;

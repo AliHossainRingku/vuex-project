@@ -1,23 +1,29 @@
 <template>
+<div class="container">
   <div class="home">
-  <add-todo></add-todo>
-  <FilterTodos />
-	<Todos />
+      <h1>This is homepage</h1>
+      <base-container>
+        <h3>0</h3>
+        <button>Add 1</button>
+      </base-container>
   </div>
+</div>
 </template>
 
 <script>
+import BaseContainer from '../components/BaseContainer.vue'
+import Todos from '../components/Todos.vue'
 // @ is an alias to /src
-import AddTodo from '@/components/AddTodo.vue'
-import FilterTodos from '@/components/FilterTodos.vue'
-import Todos from '@/components/Todos.vue'
 
 export default {
   name: 'Home',
   components: {
     Todos,
-    AddTodo,
-    FilterTodos
+    BaseContainer,
   }
 }
 </script>
+
+<style>
+
+</style>
